@@ -3,8 +3,15 @@
 A simple awk script to generate a json file from lichess PGN file.
 
 ## Features
+
 - Input file may contain multiple games
 - Handles games with clock, evaluation info
+
+## Limitations
+
+- doesn't handle pgn with move comments
+- all moves in a game should be on one line
+- if a game has computer evaluation and/or clock information, every move should have them
 
 ## Usage
 
