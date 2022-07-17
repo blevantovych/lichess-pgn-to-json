@@ -1,6 +1,6 @@
 BEGIN {
     ORS=""
-    isFirst = 1
+    is_first = 1
     if (ARGC < 2) {
         print("PGN file is not provided.")
         exit_invoked = 1
@@ -63,7 +63,7 @@ BEGIN {
         printf("\"moves\":[%s]", substr(moves, 1, length(moves) - 1)) # substr removes trailing comma
         print("}")
 
-        isFirst = 0
+        is_first = 0
         in_record = 0
 
 }
