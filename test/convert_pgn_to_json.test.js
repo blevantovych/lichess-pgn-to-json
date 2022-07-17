@@ -4,10 +4,8 @@ import { describe, expect, test } from "vitest";
 
 const exec = util.promisify(child_process.exec);
 
-const convertPgnToJson = (file) => {
-  const cmd = `awk -vFPAT='([^ ]*)|("[^"]+")' -f convert_pgn_to_json.awk ${
-    file || "game.pgn"
-  }`;
+const convertPgnToJson = (file = "game.pgn") => {
+  const cmd = `awk -vFPAT='([^ ]*)|("[^"]+")' -f convert_pgn_to_json.awk ${file}`;
   return exec(cmd);
 };
 
@@ -49,5 +47,10 @@ describe("convert_pgn_to_json", () => {
         ],
       },
     ]);
+  });
+
+  test("shows message when no pgn file is provided", async () => {
+    const { stdout } = await convertPgnToJson('');
+    expect(stdout).toBe("PGN file is not provided.");
   });
 });

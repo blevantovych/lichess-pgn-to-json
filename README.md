@@ -19,6 +19,15 @@ A simple awk script to generate a json file from lichess PGN file.
 awk -vFPAT='([^ ]*)|("[^"]+")' -f convert_pgn_to_json.awk game.pgn
 ```
 
+## Development
+
+To run tests nodejs needs to be installed
+
+```sh
+npm install
+npm test
+```
+
 ## Example
 
 Contents of the input file
