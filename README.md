@@ -9,12 +9,12 @@ A simple awk script to generate a json file from lichess PGN file.
 ## Usage
 
 ```sh
-awk -vFPAT='([^ ]*)|("[^"]+")' -f convert_pgn_to_json game.pgn
+awk -vFPAT='([^ ]*)|("[^"]+")' -f convert_pgn_to_json.awk game.pgn
 ```
 
 ## Example
 
-Contents of input file
+Contents of the input file
 ```
 [Event "Rated Bullet game"]
 [Site "https://lichess.org/CdwUKIHh"]
@@ -42,7 +42,7 @@ Contents of input file
 
 Output (unminified)
 
-```
+```json
 [
   {
     "event": "Rated Bullet game",
