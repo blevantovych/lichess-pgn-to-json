@@ -1,5 +1,7 @@
 # Convert lichess pgn file to json
 
+![build](https://app.travis-ci.com/blevantovych/lichess-pgn-to-json.svg?branch=main)
+
 A simple awk script to generate a json file from lichess PGN file.
 
 ## Features
