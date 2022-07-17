@@ -12,7 +12,7 @@ BEGIN {
 /^\[/ {
     gsub(/[\[\]]/, "", $0)
     if (!in_record) {
-      print((isFirst ? "" : ",") "{")
+      print((is_first ? "" : ",") "{")
     }
     printf("\"%s\":%s,", $1, $2 ? $2 : "null")
     in_record = 1
