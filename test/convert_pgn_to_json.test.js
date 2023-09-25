@@ -49,8 +49,35 @@ describe("convert_pgn_to_json", () => {
     ]);
   });
 
+  test("handles abandoned game with no moves", async () => {
+    const { stdout } = await convertPgnToJson("./test/abandoned_by_white.pgn");
+    expect(JSON.parse(stdout)).toMatchObject([
+      {
+        Event: "Українська ліга 137 Team Battle",
+        Site: "https://lichess.org/QexeKNjN",
+        Date: "2023.09.18",
+        White: "IgorNds",
+        Black: "game2020",
+        Result: "0-1",
+        UTCDate: "2023.09.18",
+        UTCTime: "18:18:09",
+        WhiteElo: "1945",
+        BlackElo: "2086",
+        WhiteRatingDiff: "-4",
+        BlackRatingDiff: "+4",
+        WhiteTeam: "6s03nPhu",
+        BlackTeam: "Ydful3Z4",
+        Variant: "Standard",
+        TimeControl: "180+0",
+        ECO: "?",
+        Termination: "Abandoned",
+        moves: [],
+      },
+    ]);
+  });
+
   test("shows message when no pgn file is provided", async () => {
-    const { stdout } = await convertPgnToJson('');
+    const { stdout } = await convertPgnToJson("");
     expect(stdout).toBe("PGN file is not provided.");
   });
 });

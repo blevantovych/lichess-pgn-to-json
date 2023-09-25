@@ -19,6 +19,15 @@ BEGIN {
     next
 }
 
+# Abandoned game by white
+/^ 0-1/ {
+    printf("\"moves\":[]")
+    print("}")
+
+    is_first = 0
+    in_record = 0
+}
+
 # Movetext
 /^1\./ {
         gsub(/[\[\]]/, "", $0)
