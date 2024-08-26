@@ -37,8 +37,14 @@ BEGIN {
                 if ($(i-1) ~ /%clk/) {
                     clock = $i
                     eval = $(i-2)
-                    move = $(i-5)
-                    moves = moves sprintf("{\"m\":\"%s\",\"e\":\"%s\",\"c\":\"%s\"},", move, eval, clock)
+                    # if eval is "{" it means that the last move is mate and the eval is missing
+                    if (eval == "{") {
+                        move = $(i-3)
+                        moves = moves sprintf("{\"m\":\"%s\",\"c\":\"%s\"},", move, clock)
+                    } else {
+                        move = $(i-5)
+                        moves = moves sprintf("{\"m\":\"%s\",\"e\":\"%s\",\"c\":\"%s\"},", move, eval, clock)
+                    }
                 }
             }
         }
