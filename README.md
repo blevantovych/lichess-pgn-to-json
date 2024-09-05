@@ -15,6 +15,9 @@ A simple awk script to generate a json file from lichess PGN file.
 - all moves in a game should be on one line
 - if a game has computer evaluation and/or clock information, every move should have them
 
+## AWK version
+GNU Awk 5.3.0, API 4.0, (GNU MPFR 4.2.1, GNU MP 6.3.0)
+
 ## Usage
 
 ```sh
