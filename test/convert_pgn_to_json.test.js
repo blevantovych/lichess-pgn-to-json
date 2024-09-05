@@ -5,7 +5,7 @@ import { describe, expect, test } from "vitest";
 const exec = util.promisify(child_process.exec);
 
 const convertPgnToJson = (file = "game.pgn") => {
-  const cmd = `awk -vFPAT='([^ ]*)|("[^"]+")' -f convert_pgn_to_json.awk ${file}`;
+  const cmd = `gawk -vFPAT='([^ ]*)|("[^"]+")' -f convert_pgn_to_json.awk ${file}`;
   return exec(cmd);
 };
 
@@ -183,5 +183,42 @@ describe("convert_pgn_to_json", () => {
   test("shows message when no pgn file is provided", async () => {
     const { stdout } = await convertPgnToJson("");
     expect(stdout).toBe("PGN file is not provided.");
+  });
+
+  test("handles games set up from position and that don't start with move 1", async () => {
+    const { stdout } = await convertPgnToJson(
+      "./test/fixtures/game_from_position_starting_from_move_16.pgn"
+    );
+    expect(JSON.parse(stdout)).toMatchObject([
+      {
+        Event: "Casual correspondence game",
+        Site: "https://lichess.org/uOVImFxZ",
+        Date: "2023.01.30",
+        White: "Openingmastery96",
+        Black: "lichess AI level 8",
+        Result: "1-0",
+        UTCDate: "2023.01.30",
+        UTCTime: "14:04:27",
+        WhiteElo: "1500",
+        BlackElo: "?",
+        Variant: "From Position",
+        TimeControl: "-",
+        ECO: "?",
+        Opening: "?",
+        Termination: "Normal",
+        FEN: "r1bbqrk1/1p1n2pp/2p2n2/p4p2/2PpP3/2NN1PP1/PB4BP/R2QR1K1 w - - 0 16",
+        SetUp: "1",
+        moves: [
+          { m: "exf5" },
+          { m: "Qf7" },
+          { m: "Ne4" },
+          { m: "Nxe4" },
+          { m: "fxe4" },
+          { m: "Bc7" },
+          { m: "c5" },
+          { m: "b6" },
+        ],
+      },
+    ]);
   });
 });

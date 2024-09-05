@@ -1,0 +1,20 @@
+[Event "Casual correspondence game"]
+[Site "https://lichess.org/uOVImFxZ"]
+[Date "2023.01.30"]
+[White "Openingmastery96"]
+[Black "lichess AI level 8"]
+[Result "1-0"]
+[UTCDate "2023.01.30"]
+[UTCTime "14:04:27"]
+[WhiteElo "1500"]
+[BlackElo "?"]
+[Variant "From Position"]
+[TimeControl "-"]
+[ECO "?"]
+[Opening "?"]
+[Termination "Normal"]
+[FEN "r1bbqrk1/1p1n2pp/2p2n2/p4p2/2PpP3/2NN1PP1/PB4BP/R2QR1K1 w - - 0 16"]
+[SetUp "1"]
+
+16. exf5 Qf7 17. Ne4 Nxe4 18. fxe4 Bc7 19. c5 b6 1-0
+
