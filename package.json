@@ -1,0 +1,23 @@
+{
+  "name": "lichess-pgn-to-json",
+  "version": "0.0.1",
+  "description": "Convert your pgn files to json for easier processing",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-blevantovych:blevantovych/lichess-pgn-to-json.git"
+  },
+  "keywords": [
+    "chess",
+    "lichess",
+    "pgn"
+  ],
+  "author": "blevantovych",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "vitest": "^0.18.1"
+  }
+}
